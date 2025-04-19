@@ -29,19 +29,20 @@
       padding: 20px;
       text-align: center;
       position: relative;
+      animation: fadeIn 1s ease-in-out;
     }
     header img {
       width: 100px;
       margin-bottom: 10px;
     }
-    .language-switcher, .dark-toggle {
+    .language-switcher, .dark-toggle, .social-share {
       position: absolute;
       top: 20px;
       right: 20px;
       display: flex;
       gap: 10px;
     }
-    .lang-btn, .dark-btn {
+    .lang-btn, .dark-btn, .social-btn {
       background: white;
       border: none;
       padding: 6px 10px;
@@ -53,10 +54,16 @@
       padding: 40px 20px;
       max-width: 800px;
       margin: auto;
+      opacity: 0;
+      animation: fadeIn 1s ease-in-out forwards;
     }
     h2 {
       color: var(--primary);
       cursor: pointer;
+      transition: transform 0.3s;
+    }
+    h2:hover {
+      transform: scale(1.05);
     }
     .accordion {
       background: var(--accent);
@@ -64,16 +71,6 @@
       padding: 20px;
       margin-bottom: 20px;
       display: none;
-    }
-    .roadmap-box {
-      background: var(--accent);
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 30px;
-    }
-    .roadmap-box h3 {
-      margin-top: 0;
-      color: var(--primary);
     }
     footer {
       text-align: center;
@@ -85,6 +82,16 @@
       color: #d30000;
       text-decoration: none;
     }
+    
+    /* Animasi */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
   </style>
 </head>
 <body>
@@ -95,12 +102,17 @@
     <div class="language-switcher">
       <button class="lang-btn" onclick="setLang('id')">ID</button>
       <button class="lang-btn" onclick="setLang('en')">EN</button>
+    </div>
+    <div class="dark-toggle">
       <button class="dark-btn" onclick="toggleDarkMode()">🌓</button>
+    </div>
+    <div class="social-share">
+      <button class="social-btn" onclick="shareTwitter()">Twitter</button>
+      <button class="social-btn" onclick="shareTelegram()">Telegram</button>
     </div>
   </header>
 
   <section id="whitepaper"></section>
-  <section id="roadmap"></section>
 
   <footer>
     <p>🇮🇩 Hidup Indonesia! | NKRI Harga Mati</p>
@@ -115,7 +127,7 @@
         { title: "Visi & Misi", text: "<p><strong>Visi:</strong> Menjadi inspirasi generasi muda untuk memahami dan mengembangkan blockchain.<br><strong>Misi:</strong><ul><li>Adopsi blockchain di Indonesia.</li><li>Komunitas aktif & edukatif.</li><li>Simbol kebanggaan nasional.</li></ul></p>" },
         { title: "Tokenomics", text: "<p><strong>Nama:</strong> BEMO_US IND<br><strong>Simbol:</strong> BEMO<br><strong>Desimal:</strong> 9<br><strong>Jaringan:</strong> TON<br><strong>Alamat Kontrak:</strong> EQDS-tFyxlN4-4mbytt1-6U2i3C17c5z0qNxD2ooA9xEkPbh</p><p><strong>Distribusi:</strong><ul><li>50% Komunitas</li><li>20% Tim</li><li>15% Cadangan & Pemasaran</li><li>10% Kemitraan</li><li>5% Dana Cadangan</li></ul></p>" },
         { title: "Teknologi yang Digunakan", text: "<p>BEMO_US IND menggunakan teknologi <strong>TON</strong> untuk keamanan dan efisiensi.<br><strong>Fitur:</strong><ul><li>Smart Contract</li><li>Keamanan Tinggi</li></ul></p>" },
-        { title: "Peta Jalan (Roadmap)", text: "<p>Lihat roadmap interaktif di bawah ini.</p>" },
+        { title: "Peta Jalan (Roadmap)", text: "<ul><li><strong>Q1 2025:</strong> Peluncuran token, smart contract.</li><li><strong>Q2 2025:</strong> Komunitas & pemasaran.</li><li><strong>Q3 2025:</strong> Edukasi & fitur tambahan.</li><li><strong>Q4 2025:</strong> Globalisasi & kemitraan.</li></ul>" },
         { title: "Tentang Pengembang", text: "<p>Dikembangkan oleh seorang solo developer asal Indonesia, dengan latar belakang software dan blockchain, proyek ini lahir dari semangat nasionalisme dan inovasi mandiri.</p>" },
         { title: "Komunitas & Keterlibatan", text: "<p>Bergabunglah bersama komunitas kami:</p><ul><li>🐦 Twitter: <a href='#'>@BemoUS_IND</a></li><li>💬 Telegram: <a href='#'>t.me/BemoCommunity</a></li><li>💻 GitHub: <a href='https://github.com/Bemo1507/Bemo_US'>Bemo_US</a></li></ul>" },
         { title: "Risiko & Tantangan", text: "<p><strong>Risiko:</strong><ul><li>Fluktuasi pasar</li><li>Perubahan regulasi</li><li>Skalabilitas proyek</li></ul><p>Kami akan hadapi dengan transparansi & teknologi terbaik.</p>" },
@@ -133,10 +145,9 @@
         { title: "Community & Involvement", text: "<p>Join our community:</p><ul><li>🐦 Twitter: <a href='#'>@BemoUS_IND</a></li><li>💬 Telegram: <a href='#'>t.me/BemoCommunity</a></li><li>💻 GitHub: <a href='https://github.com/Bemo1507/Bemo_US'>Bemo_US</a></li></ul>" },
         { title: "Risks & Challenges", text: "<p><strong>Risks:</strong><ul><li>Market fluctuations</li><li>Regulatory changes</li><li>Project scalability</li></ul><p>We will address them with transparency & the best technology.</p>" },
         { title: "Conclusion", text: "<p><strong>BEMO_US IND</strong> is a symbol of innovation and digital nationalism. This project invites Indonesian youth to explore the potential of Web3 with pride and passion!</p>" }
-      ]
+      ] // Tempat untuk konten bahasa Inggris
     };
-
-    const roadmapContent = {
+     const roadmapContent = {
       id: [
         { quarter: "Q1 2025", items: ["Peluncuran token BEMO_US IND di jaringan TON", "Pemrograman dan peluncuran smart contract pertama"] },
         { quarter: "Q2 2025", items: ["Pembentukan dan pengembangan komunitas (Twitter, Telegram)", "Pemasaran dan kolaborasi dengan influencer blockchain Indonesia"] },
@@ -172,38 +183,26 @@
       });
     }
 
-    function renderRoadmap() {
-      const roadmap = document.getElementById("roadmap");
-      roadmap.innerHTML = '<h2>Roadmap</h2>';
-      roadmapContent[currentLang].forEach(item => {
-        const box = document.createElement("div");
-        box.className = "roadmap-box";
-        const title = document.createElement("h3");
-        title.textContent = item.quarter;
-        const ul = document.createElement("ul");
-        item.items.forEach(point => {
-          const li = document.createElement("li");
-          li.textContent = point;
-          ul.appendChild(li);
-        });
-        box.appendChild(title);
-        box.appendChild(ul);
-        roadmap.appendChild(box);
-      });
-    }
-
     function setLang(lang) {
       currentLang = lang;
       renderWhitepaper();
-      renderRoadmap();
     }
 
     function toggleDarkMode() {
       document.body.classList.toggle("dark-mode");
     }
 
+    function shareTwitter() {
+      const url = 'https://twitter.com/intent/tweet?text=Check+out+BEMO_US+IND!+A+token+crypto+from+Indonesia+inspired+by+legendary+transportation!';
+      window.open(url, '_blank');
+    }
+
+    function shareTelegram() {
+      const url = 'https://t.me/share/url?url=https://example.com&text=Check+out+BEMO_US+IND!';
+      window.open(url, '_blank');
+    }
+
     renderWhitepaper();
-    renderRoadmap();
   </script>
 </body>
 </html>
