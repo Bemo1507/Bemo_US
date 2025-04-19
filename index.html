@@ -3,79 +3,74 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>White Paper - BEMO_US IND</title>
+  <title>BEMO_US IND - Token Anak Bangsa</title>
   <style>
+    :root {
+      --primary: #005f9e;
+      --accent: #e6f0ff;
+      --dark-bg: #1a1a1a;
+      --dark-text: #f0f0f0;
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
       background-color: #f9f9f9;
       margin: 0;
       padding: 0;
       color: #333;
+      transition: background 0.3s, color 0.3s;
     }
-
+    body.dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
     header {
-      background-color: #005f9e;
+      background-color: var(--primary);
       color: white;
       padding: 20px;
       text-align: center;
       position: relative;
     }
-
-    .language-switcher {
+    header img {
+      width: 100px;
+      margin-bottom: 10px;
+    }
+    .language-switcher, .dark-toggle {
       position: absolute;
       top: 20px;
       right: 20px;
+      display: flex;
+      gap: 10px;
     }
-
-    .language-switcher button {
+    .lang-btn, .dark-btn {
       background: white;
-      color: #005f9e;
       border: none;
-      padding: 5px 10px;
-      margin-left: 5px;
-      border-radius: 4px;
+      padding: 6px 10px;
       cursor: pointer;
+      font-size: 14px;
+      border-radius: 6px;
     }
-
     section {
-      padding: 20px;
-      max-width: 900px;
+      padding: 40px 20px;
+      max-width: 800px;
       margin: auto;
     }
-
     h2 {
-      color: #005f9e;
+      color: var(--primary);
       cursor: pointer;
-      margin: 20px 0 10px;
-      background: #e6f0ff;
-      padding: 15px;
+    }
+    .accordion {
+      background: var(--accent);
       border-radius: 8px;
-    }
-
-    .content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.4s ease;
-      background: #fff;
-      border-left: 4px solid #005f9e;
-      border-radius: 4px;
+      padding: 20px;
       margin-bottom: 20px;
-      padding: 0 15px;
+      display: none;
     }
-
-    .content.show {
-      max-height: 1000px;
-      padding: 15px;
-    }
-
     footer {
       text-align: center;
       padding: 20px;
       font-size: 14px;
       background: #eee;
-      margin-top: 40px;
     }
-
     a {
       color: #d30000;
       text-decoration: none;
@@ -83,19 +78,18 @@
   </style>
 </head>
 <body>
-
   <header>
-    <h1 id="title">White Paper - BEMO_US IND</h1>
-    <p id="subtitle">Token Anak Bangsa, Terinspirasi dari Transportasi Legendaris Indonesia</p>
+    <img src="https://tellertoken.wordpress.com/wp-content/uploads/2025/04/bemo-logo-256x256-1.png" alt="Logo BEMO" />
+    <h1>BEMO_US IND</h1>
+    <p>Token Anak Bangsa, Terinspirasi dari Transportasi Legendaris Indonesia</p>
     <div class="language-switcher">
-      <button onclick="switchLanguage('id')">🇮🇩 ID</button>
-      <button onclick="switchLanguage('en')">🇺🇸 EN</button>
+      <button class="lang-btn" onclick="setLang('id')">ID</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="dark-btn" onclick="toggleDarkMode()">🌓</button>
     </div>
   </header>
 
-  <section id="whitepaper">
-    <!-- Bagian-bagian white paper akan di-generate lewat JavaScript -->
-  </section>
+  <section id="whitepaper"></section>
 
   <footer>
     <p>🇮🇩 Hidup Indonesia! | NKRI Harga Mati</p>
@@ -104,58 +98,52 @@
   <script>
     const whitepaperContent = {
       id: [
-        { title: "Pendahuluan", text: "BEMO_US IND adalah token kripto yang diciptakan oleh pengembang solo asal Indonesia..." },
-        { title: "Masalah yang Dihadapi", text: "<ul><li>Kurangnya pengetahuan tentang blockchain.</li><li>Kurangnya token lokal.</li></ul>" },
-        { title: "Solusi yang Ditawarkan", text: "BEMO_US IND hadir sebagai token dengan sentuhan lokal, berbasis jaringan TON." },
-        { title: "Visi & Misi", text: "<strong>Visi:</strong> Menginspirasi generasi muda Indonesia di dunia Web3.<br><strong>Misi:</strong><ul><li>Adopsi blockchain</li><li>Bangun komunitas</li></ul>" },
-        { title: "Tokenomics", text: "Nama: BEMO_US IND<br>Simbol: BEMO<br><strong>Distribusi:</strong><ul><li>50% Komunitas</li></ul>" },
-        { title: "Roadmap", text: "<ul><li><strong>Q1:</strong> Launch token</li><li><strong>Q4:</strong> Global ekspansi</li></ul>" }
+        { title: "Pendahuluan", text: "<p><strong>BEMO_US IND</strong> adalah token kripto yang diciptakan oleh pengembang solo asal Indonesia, dengan tujuan untuk meningkatkan adopsi teknologi blockchain di kalangan anak muda Indonesia...</p>" },
+        { title: "Masalah yang Dihadapi", text: "<p>Beberapa masalah yang ingin diselesaikan oleh BEMO_US IND:</p><ul><li>Kurangnya pengetahuan tentang blockchain.</li><li>Belum adanya token kripto bernuansa nasionalisme.</li><li>Minimnya keterlibatan dalam ekosistem Web3.</li></ul>" },
+        { title: "Solusi yang Ditawarkan", text: "<p>BEMO_US IND dibangun di atas jaringan TON dengan fitur utama seperti:</p><ul><li>Token Kripto Lokal</li><li>Blockchain Terbuka</li><li>Komunitas Terlibat</li></ul>" },
+        { title: "Visi & Misi", text: "<p><strong>Visi:</strong> Menjadi inspirasi generasi muda untuk memahami dan mengembangkan blockchain.<br><strong>Misi:</strong><ul><li>Adopsi blockchain di Indonesia.</li><li>Komunitas aktif & edukatif.</li><li>Simbol kebanggaan nasional.</li></ul></p>" },
+        { title: "Tokenomics", text: "<p><strong>Nama:</strong> BEMO_US IND<br><strong>Simbol:</strong> BEMO<br><strong>Desimal:</strong> 9<br><strong>Jaringan:</strong> TON<br><strong>Alamat Kontrak:</strong> EQDS-tFyxlN4-4mbytt1-6U2i3C17c5z0qNxD2ooA9xEkPbh</p><p><strong>Distribusi:</strong><ul><li>50% Komunitas</li><li>20% Tim</li><li>15% Cadangan & Pemasaran</li><li>10% Kemitraan</li><li>5% Dana Cadangan</li></ul></p>" },
+        { title: "Teknologi yang Digunakan", text: "<p>BEMO_US IND menggunakan teknologi <strong>TON</strong> untuk keamanan dan efisiensi.<br><strong>Fitur:</strong><ul><li>Smart Contract</li><li>Keamanan Tinggi</li></ul></p>" },
+        { title: "Peta Jalan (Roadmap)", text: "<ul><li><strong>Q1 2025:</strong> Peluncuran token, smart contract.</li><li><strong>Q2 2025:</strong> Komunitas & pemasaran.</li><li><strong>Q3 2025:</strong> Edukasi & fitur tambahan.</li><li><strong>Q4 2025:</strong> Globalisasi & kemitraan.</li></ul>" },
+        { title: "Tentang Pengembang", text: "<p>Dikembangkan oleh seorang solo developer asal Indonesia, dengan latar belakang software dan blockchain, proyek ini lahir dari semangat nasionalisme dan inovasi mandiri.</p>" },
+        { title: "Komunitas & Keterlibatan", text: "<p>Bergabunglah bersama komunitas kami:</p><ul><li>🐦 Twitter: <a href='#'>@BemoUS_IND</a></li><li>💬 Telegram: <a href='#'>t.me/BemoCommunity</a></li><li>💻 GitHub: <a href='https://github.com/Bemo1507/Bemo_US'>Bemo_US</a></li></ul>" },
+        { title: "Risiko & Tantangan", text: "<p><strong>Risiko:</strong><ul><li>Fluktuasi pasar</li><li>Perubahan regulasi</li><li>Skalabilitas proyek</li></ul><p>Kami akan hadapi dengan transparansi & teknologi terbaik.</p>" },
+        { title: "Kesimpulan", text: "<p><strong>BEMO_US IND</strong> adalah simbol inovasi dan nasionalisme digital. Proyek ini mengajak anak bangsa untuk menjelajahi potensi Web3 dengan bangga dan semangat!</p>" }
       ],
-      en: [
-        { title: "Introduction", text: "BEMO_US IND is a crypto token created by a solo developer from Indonesia..." },
-        { title: "Challenges", text: "<ul><li>Lack of blockchain awareness.</li><li>No local-representing tokens.</li></ul>" },
-        { title: "Solution", text: "BEMO_US IND is a community-first project inspired by Indonesian culture." },
-        { title: "Vision & Mission", text: "<strong>Vision:</strong> Inspire youth to embrace Web3.<br><strong>Mission:</strong><ul><li>Promote blockchain</li><li>Build community</li></ul>" },
-        { title: "Tokenomics", text: "Name: BEMO_US IND<br>Symbol: BEMO<br><strong>Distribution:</strong><ul><li>50% Community</li></ul>" },
-        { title: "Roadmap", text: "<ul><li><strong>Q1:</strong> Token launch</li><li><strong>Q4:</strong> Global expansion</li></ul>" }
-      ]
+      en: []
     };
 
-    function loadWhitePaper(lang = 'id') {
+    let currentLang = 'id';
+
+    function renderWhitepaper() {
       const container = document.getElementById("whitepaper");
-      container.innerHTML = '';
-
-      whitepaperContent[lang].forEach(section => {
-        const h2 = document.createElement('h2');
-        h2.className = 'accordion';
-        h2.innerHTML = section.title;
-
-        const div = document.createElement('div');
-        div.className = 'content';
-        div.innerHTML = section.text;
-
-        h2.addEventListener("click", () => {
-          div.classList.toggle("show");
+      container.innerHTML = "";
+      whitepaperContent[currentLang].forEach((item, index) => {
+        const title = document.createElement("h2");
+        title.textContent = item.title;
+        title.addEventListener("click", () => {
+          const content = document.getElementById(`accordion-${index}`);
+          content.style.display = content.style.display === "block" ? "none" : "block";
         });
-
-        container.appendChild(h2);
-        container.appendChild(div);
+        const content = document.createElement("div");
+        content.className = "accordion";
+        content.id = `accordion-${index}`;
+        content.innerHTML = item.text;
+        container.appendChild(title);
+        container.appendChild(content);
       });
-
-      // Ganti judul dan subtitle
-      document.getElementById("title").textContent = lang === 'en' ? "White Paper - BEMO_US IND" : "White Paper - BEMO_US IND";
-      document.getElementById("subtitle").textContent = lang === 'en'
-        ? "A Nation's Token, Inspired by Indonesia's Iconic Transport"
-        : "Token Anak Bangsa, Terinspirasi dari Transportasi Legendaris Indonesia";
     }
 
-    function switchLanguage(lang) {
-      loadWhitePaper(lang);
+    function setLang(lang) {
+      currentLang = lang;
+      renderWhitepaper();
     }
 
-    // Load default language
-    loadWhitePaper('id');
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    renderWhitepaper();
   </script>
-
 </body>
 </html>
