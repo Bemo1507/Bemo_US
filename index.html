@@ -18,26 +18,36 @@
       padding: 20px;
       text-align: center;
     }
-    header h1 {
-      margin: 0;
-    }
     section {
-      padding: 40px 20px;
+      padding: 20px;
       max-width: 900px;
       margin: auto;
     }
-    h2, h3 {
+    h2 {
       color: #005f9e;
+      cursor: pointer;
+      margin: 20px 0 10px;
+      background: #e6f0ff;
+      padding: 15px;
+      border-radius: 8px;
+    }
+    .content {
+      display: none;
+      margin-bottom: 20px;
+      padding: 0 15px;
+      background: #fff;
+      border-left: 4px solid #005f9e;
+      border-radius: 4px;
+    }
+    .active + .content {
+      display: block;
     }
     footer {
       text-align: center;
       padding: 20px;
       font-size: 14px;
       background: #eee;
-    }
-    a {
-      color: #d30000;
-      text-decoration: none;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -49,122 +59,98 @@
   </header>
 
   <section>
-    <h2>Pendahuluan</h2>
-    <p><strong>BEMO_US IND</strong> adalah token kripto yang diciptakan oleh pengembang solo asal Indonesia, dengan tujuan untuk meningkatkan adopsi teknologi blockchain di kalangan anak muda Indonesia. Terinspirasi oleh transportasi ikonik Jakarta, Bemo, proyek ini bertujuan untuk membawa semangat nasionalisme dalam dunia blockchain, menciptakan peluang bagi generasi muda Indonesia untuk berinovasi, dan memperkenalkan mereka pada dunia Web3.</p>
-  </section>
+    <h2 class="accordion">Pendahuluan</h2>
+    <div class="content">
+      <p>BEMO_US IND adalah token kripto yang diciptakan oleh pengembang solo asal Indonesia, dengan tujuan meningkatkan adopsi teknologi blockchain di kalangan anak muda Indonesia...</p>
+    </div>
 
-  <section>
-    <h2>Masalah yang Dihadapi</h2>
-    <p>Meskipun teknologi blockchain dan kripto semakin berkembang secara global, di Indonesia, adopsi teknologi ini masih terbatas, terutama di kalangan generasi muda. Banyak anak muda yang belum sepenuhnya memahami manfaat teknologi ini atau tidak tahu bagaimana cara terlibat.</p>
-    <p><strong>Beberapa masalah yang ingin diselesaikan oleh BEMO_US IND:</strong></p>
-    <ul>
-      <li>Kurangnya pengetahuan dan pemahaman tentang blockchain di kalangan anak muda Indonesia.</li>
-      <li>Belum adanya token kripto yang mewakili semangat lokal dan nasionalisme Indonesia.</li>
-      <li>Terbatasnya keterlibatan Indonesia dalam ekosistem global Web3.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Solusi yang Ditawarkan</h2>
-    <p><strong>BEMO_US IND</strong> adalah token kripto yang bertujuan untuk mengatasi masalah ini dengan cara yang unik dan relevan. Token ini dibangun di atas <strong>The Open Network (TON)</strong> untuk memastikan skalabilitas, keamanan, dan aksesibilitas yang lebih baik bagi pengguna. Proyek ini bertujuan untuk menginspirasi generasi muda Indonesia agar terlibat dalam ekosistem blockchain melalui cara yang sederhana namun berdampak.</p>
-    <p><strong>Beberapa fitur utama BEMO_US IND:</strong></p>
-    <ul>
-      <li><strong>Token Kripto Lokal</strong>: Menggunakan simbol dan nama yang terinspirasi dari kendaraan tradisional Indonesia, <em>BEMO</em>.</li>
-      <li><strong>Blockchain Terbuka</strong>: Dibangun di jaringan <strong>TON</strong>, yang menawarkan transaksi cepat dan biaya rendah.</li>
-      <li><strong>Komunitas yang Terlibat</strong>: Fokus pada membangun komunitas yang aktif di Indonesia dengan menggunakan platform seperti <strong>Twitter</strong>, <strong>Telegram</strong>, dan <strong>GitHub</strong>.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Visi & Misi</h2>
-    <h3>Visi</h3>
-    <p>Menjadi token kripto yang menginspirasi generasi muda Indonesia untuk lebih memahami, menggunakan, dan mengembangkan teknologi blockchain dalam menghadapi era Web3.</p>
-
-    <h3>Misi</h3>
-    <ul>
-      <li>Meningkatkan adopsi teknologi blockchain di Indonesia, khususnya di kalangan anak muda.</li>
-      <li>Mengembangkan komunitas aktif yang bisa saling berbagi pengetahuan dan pengalaman terkait kripto dan blockchain.</li>
-      <li>Menjadi simbol kebanggaan Indonesia dalam dunia kripto.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Tokenomics</h2>
-    <p><strong>BEMO_US IND</strong> adalah token ERC-20 yang beroperasi di jaringan <strong>TON</strong> (The Open Network). Berikut adalah detail tokenomiknya:</p>
-    <ul>
-      <li><strong>Nama Token</strong>: BEMO_US IND</li>
-      <li><strong>Simbol Token</strong>: BEMO</li>
-      <li><strong>Desimal</strong>: 9</li>
-      <li><strong>Jaringan</strong>: TON (The Open Network)</li>
-      <li><strong>Alamat Kontrak</strong>: EQDS-tFyxlN4-4mbytt1-6U2i3C17c5z0qNxD2ooA9xEkPbh</li>
-    </ul>
-
-    <h3>Distribusi Token</h3>
-    <ul>
-      <li><strong>50%</strong> untuk <strong>Komunitas & Pengguna</strong>: Diberikan melalui airdrop, event, dan partisipasi komunitas.</li>
-      <li><strong>20%</strong> untuk <strong>Tim & Pengembang</strong>: Diberikan untuk pengembang dan pemeliharaan proyek.</li>
-      <li><strong>15%</strong> untuk <strong>Cadangan & Pemasaran</strong>: Digunakan untuk pemasaran dan pengembangan lebih lanjut.</li>
-      <li><strong>10%</strong> untuk <strong>Kemitraan & Kolaborasi</strong>: Digunakan untuk mendukung kemitraan dengan organisasi blockchain atau komunitas lainnya.</li>
-      <li><strong>5%</strong> untuk <strong>Dana Cadangan</strong>: Menyediakan dana untuk kebutuhan mendatang.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Teknologi yang Digunakan</h2>
-    <p><strong>BEMO_US IND</strong> menggunakan teknologi <strong>TON (The Open Network)</strong> untuk memastikan keamanan, kecepatan, dan skalabilitas. TON adalah platform blockchain yang dirancang untuk memfasilitasi transaksi yang cepat dan biaya rendah.</p>
-    <p><strong>Fitur teknis dari token ini meliputi:</strong></p>
-    <ul>
-      <li><strong>Smart Contract</strong>: Semua transaksi dan distribusi token dilakukan melalui smart contract yang transparan dan terverifikasi.</li>
-      <li><strong>Keamanan Tinggi</strong>: Sistem blockchain TON menawarkan enkripsi yang kuat dan keamanan tingkat tinggi untuk melindungi data dan transaksi pengguna.</li>
-    </ul>
-  </section>
-
-  <section>
-    <h2>Peta Jalan (Roadmap)</h2>
-    <p><strong>Q1 2025</strong>:
+    <h2 class="accordion">Masalah yang Dihadapi</h2>
+    <div class="content">
+      <p>Beberapa masalah yang ingin diselesaikan:</p>
       <ul>
-        <li>Peluncuran token <strong>BEMO_US IND</strong> di jaringan TON.</li>
-        <li>Pemrograman dan peluncuran smart contract pertama.</li>
+        <li>Kurangnya pengetahuan tentang blockchain.</li>
+        <li>Belum ada token yang mewakili semangat lokal.</li>
+        <li>Keterlibatan Indonesia di Web3 masih terbatas.</li>
       </ul>
-    </p>
-    <p><strong>Q2 2025</strong>:
-      <ul>
-        <li>Pembentukan dan pengembangan komunitas di media sosial (Twitter, Telegram).</li>
-        <li>Pemasaran dan kolaborasi dengan influencer blockchain Indonesia.</li>
-      </ul>
-    </p>
-    <p><strong>Q3 2025</strong>:
-      <ul>
-        <li>Penyediaan lebih banyak informasi edukasi tentang blockchain untuk komunitas.</li>
-        <li>Pengembangan fitur baru pada platform untuk mendukung penggunaan token.</li>
-      </ul>
-    </p>
-    <p><strong>Q4 2025</strong>:
-      <ul>
-        <li>Penyebaran token ke komunitas global.</li>
-        <li>Kemitraan dengan proyek blockchain dan kripto lainnya.</li>
-      </ul>
-    </p>
-  </section>
+    </div>
 
-  <section>
-    <h2>Tentang Pengembang</h2>
-    <p><strong>BEMO_US IND</strong> dibuat oleh Harun AKA Bemo, seorang solo developer dengan latar belakang dalam pengembangan perangkat lunak dan blockchain. Dengan semangat untuk mengangkat teknologi lokal Indonesia, saya berkomitmen untuk menciptakan peluang bagi generasi muda Indonesia untuk mengenal dan terlibat dalam dunia blockchain. Semua aspek teknis proyek ini, mulai dari pengembangan smart contract hingga pemasaran, dikelola sendiri oleh saya sebagai pengembang utama.</p>
-  </section>
+    <h2 class="accordion">Solusi yang Ditawarkan</h2>
+    <div class="content">
+      <p>BEMO_US IND hadir sebagai token dengan sentuhan lokal, berbasis jaringan TON, dan mendorong keterlibatan komunitas muda Indonesia.</p>
+    </div>
 
-  <section>
-    <h2>Komunitas & Keterlibatan</h2>
-    <p>Kami mengundang semua pihak untuk bergabung dalam komunitas <strong>BEMO_US IND</strong>:</p>
-    <ul>
-      <li><strong>Twitter</strong>: <a href="https://twitter.com/BemoUS_IND" target="_blank">@BemoUS_IND</a></li>
-      <li><strong>Telegram</strong>: <a href="https://t.me/BemoCommunity" target="_blank">t.me/BemoCommunity</a></li>
-      <li><strong>GitHub</strong>: <a href="https://github.com/Bemo1507/Bemo_US" target="_blank">Bemo_US on GitHub</a></li>
-    </ul>
+    <h2 class="accordion">Visi & Misi</h2>
+    <div class="content">
+      <p><strong>Visi:</strong> Menginspirasi generasi muda Indonesia di dunia Web3.</p>
+      <p><strong>Misi:</strong></p>
+      <ul>
+        <li>Adopsi blockchain di Indonesia</li>
+        <li>Membangun komunitas aktif</li>
+        <li>Simbol kebanggaan kripto Indonesia</li>
+      </ul>
+    </div>
+
+    <h2 class="accordion">Tokenomics</h2>
+    <div class="content">
+      <p>Nama: BEMO_US IND<br>Simbol: BEMO<br>Desimal: 9<br>Jaringan: TON</p>
+      <p><strong>Distribusi:</strong></p>
+      <ul>
+        <li>50% Komunitas</li>
+        <li>20% Tim</li>
+        <li>15% Marketing</li>
+        <li>10% Kemitraan</li>
+        <li>5% Cadangan</li>
+      </ul>
+    </div>
+
+    <h2 class="accordion">Teknologi</h2>
+    <div class="content">
+      <p>Menggunakan TON Blockchain yang cepat, aman, dan scalable. Semua transaksi lewat smart contract transparan.</p>
+    </div>
+
+    <h2 class="accordion">Roadmap</h2>
+    <div class="content">
+      <ul>
+        <li><strong>Q1:</strong> Launch token & smart contract</li>
+        <li><strong>Q2:</strong> Bangun komunitas, promosi</li>
+        <li><strong>Q3:</strong> Edukasi blockchain, fitur baru</li>
+        <li><strong>Q4:</strong> Ekspansi global</li>
+      </ul>
+    </div>
+
+    <h2 class="accordion">Tentang Pengembang</h2>
+    <div class="content">
+      <p>Dibuat oleh solo developer asal Indonesia. Semua bagian proyek ini, dari coding, desain, sampai promosi dikerjakan sendiri dengan semangat cinta tanah air.</p>
+    </div>
+
+    <h2 class="accordion">Komunitas</h2>
+    <div class="content">
+      <p>Bergabung dengan komunitas:</p>
+      <ul>
+        <li>Twitter: <a href="https://twitter.com/BemoUS_IND">@BemoUS_IND</a></li>
+        <li>Telegram: <a href="https://t.me/BemoCommunity">t.me/BemoCommunity</a></li>
+        <li>GitHub: <a href="https://github.com/Bemo1507/Bemo_US">Bemo_US on GitHub</a></li>
+      </ul>
+    </div>
   </section>
 
   <footer>
     <p>🇮🇩 Hidup Indonesia! | NKRI Harga Mati</p>
   </footer>
 
+  <script>
+    const acc = document.querySelectorAll(".accordion");
+    acc.forEach(el => {
+      el.addEventListener("click", () => {
+        el.classList.toggle("active");
+        const content = el.nextElementSibling;
+        if (content.style.display === "block") {
+          content.style.display = "none";
+        } else {
+          content.style.display = "block";
+        }
+      });
+    });
+  </script>
 </body>
 </html>
