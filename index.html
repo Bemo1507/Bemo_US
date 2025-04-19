@@ -113,9 +113,10 @@
   </header>
 
   <section id="whitepaper"></section>
+  <section id="roadmap"></section>
 
   <footer>
-    <p>🇮🇩 Hidup Indonesia! | NKRI Harga Mati</p>
+    <p>🇮🇩 Hidup Indonesia! | NKRI Harga Mati 2025</p>
   </footer>
 
   <script>
@@ -180,6 +181,25 @@
         content.innerHTML = item.text;
         container.appendChild(title);
         container.appendChild(content);
+      });
+    }
+    function renderRoadmap() {
+        const roadmap = document.getElementById("roadmap");
+        roadmap.innerHTML = '<h2>Roadmap</h2>';
+        roadmapContent[currentLang].forEach(item => {
+          const box = document.createElement("div");
+          box.className = "roadmap-box";
+          const title = document.createElement("h3");
+          title.textContent = item.quarter;
+          const ul = document.createElement("ul");
+          item.items.forEach(point => {
+            const li = document.createElement("li");
+            li.textContent = point;
+            ul.appendChild(li);
+        });
+        box.appendChild(title);
+        box.appendChild(ul);
+        roadmap.appendChild(box);
       });
     }
 
