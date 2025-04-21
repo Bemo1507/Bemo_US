@@ -202,61 +202,68 @@
 
     let currentLang = 'id';
 
-    function renderWhitepaper() {
-  const container = document.getElementById("whitepaper");
-  container.innerHTML = "";
-  whitepaperContent[currentLang].forEach((item, index) => {
-    const title = document.createElement("h2");
-    title.textContent = item.title;
-    title.setAttribute("tabindex", 0);
-    title.setAttribute("role", "button");
-    title.setAttribute("aria-expanded", "false");
-    title.setAttribute("aria-controls", `accordion-${index}`);
-    
-    const content = document.createElement("div");
-    content.className = "accordion fade-in";
-    content.id = `accordion-${index}`;
-    content.setAttribute("aria-hidden", "true");
-    content.innerHTML = item.text;
+     function renderWhitepaper() {
+    const container = document.getElementById("whitepaper");
+    container.innerHTML = "";
+    whitepaperContent[currentLang].forEach((item, index) => {
+      const title = document.createElement("h2");
+      title.textContent = item.title;
+      title.setAttribute("tabindex", 0);
+      title.setAttribute("role", "button");
+      title.setAttribute("aria-expanded", "false");
+      title.setAttribute("aria-controls", `accordion-${index}`);
 
-    title.addEventListener("click", () => {
-      const isExpanded = content.classList.contains("open");
-      content.classList.toggle("open");
-      title.setAttribute("aria-expanded", !isExpanded);
-    });
+      const content = document.createElement("div");
+      content.className = "accordion";
+      content.id = `accordion-${index}`;
+      content.setAttribute("aria-hidden", "true");
+      content.innerHTML = item.text;
 
-    container.appendChild(title);
-    container.appendChild(content);
-  });
-} // <<< tambahkan ini untuk menutup fungsi secara benar
-
-    }
-
-    function renderRoadmap() {
-      const roadmap = document.getElementById("roadmap");
-      roadmap.innerHTML = '<h2>Roadmap</h2>';
-      roadmapContent[currentLang].forEach(item => {
-        const box = document.createElement("div");
-        box.className = "roadmap-box";
-        const title = document.createElement("h3");
-        title.textContent = item.quarter;
-        const ul = document.createElement("ul");
-        item.items.forEach(point => {
-          const li = document.createElement("li");
-          li.textContent = point;
-          ul.appendChild(li);
-        });
-        box.appendChild(title);
-        box.appendChild(ul);
-        roadmap.appendChild(box);
+      title.addEventListener("click", () => {
+        const isExpanded = content.classList.contains("open");
+        content.classList.toggle("open");
+        title.setAttribute("aria-expanded", !isExpanded);
       });
-    }
 
-    function setLang(lang) {
-      currentLang = lang;
-      renderWhitepaper();
-      renderRoadmap();
-    }
+      container.appendChild(title);
+      container.appendChild(content);
+    });
+  }
+
+  function renderRoadmap() {
+    const roadmap = document.getElementById("roadmap");
+    roadmap.innerHTML = '<h2>Roadmap</h2>';
+    roadmapContent[currentLang].forEach(item => {
+      const box = document.createElement("div");
+      box.className = "roadmap-box";
+      const title = document.createElement("h3");
+      title.textContent = item.quarter;
+      const ul = document.createElement("ul");
+      item.items.forEach(point => {
+        const li = document.createElement("li");
+        li.textContent = point;
+        ul.appendChild(li);
+      });
+      box.appendChild(title);
+      box.appendChild(ul);
+      roadmap.appendChild(box);
+    });
+  }
+
+  function setLang(lang) {
+    currentLang = lang;
+    renderWhitepaper();
+    renderRoadmap();
+  }
+
+  function toggleDarkMode() {
+    document.body.classList.toggle("dark-mode");
+  }
+
+  // jalankan di awal
+  renderWhitepaper();
+  renderRoadmap();
+</script>
 
     function toggleDarkMode() {
       document.body.classList.toggle("dark-mode");
