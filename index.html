@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>BEMO_US IND - Token Anak Bangsa</title>
-  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
       --primary: #005f9e;
@@ -12,25 +12,21 @@
       --dark-bg: #1a1a1a;
       --dark-text: #f0f0f0;
     }
-
     html {
       scroll-behavior: smooth;
     }
-
     body {
       font-family: 'Poppins', sans-serif;
       background-color: #f9f9f9;
+      color: #333;
       margin: 0;
       padding: 0;
-      color: #333;
       transition: background 0.3s, color 0.3s;
     }
-
     body.dark-mode {
       background-color: var(--dark-bg);
       color: var(--dark-text);
     }
-
     header {
       background-color: var(--primary);
       color: white;
@@ -38,12 +34,10 @@
       text-align: center;
       position: relative;
     }
-
     header img {
       width: 100px;
       margin-bottom: 10px;
     }
-
     .language-switcher {
       position: absolute;
       top: 20px;
@@ -51,7 +45,6 @@
       display: flex;
       gap: 10px;
     }
-
     .lang-btn, .dark-btn {
       background: white;
       border: none;
@@ -59,72 +52,53 @@
       cursor: pointer;
       font-size: 14px;
       border-radius: 6px;
-      transition: background 0.3s;
     }
-
-    .lang-btn:hover, .dark-btn:hover {
-      background: #ddd;
-    }
-
     section {
       padding: 40px 20px;
       max-width: 800px;
       margin: auto;
     }
-
     h2 {
       color: var(--primary);
       cursor: pointer;
-      transition: color 0.3s;
+      margin-top: 20px;
+      transition: 0.2s;
     }
-
     h2:hover {
-      color: #003b66;
+      text-decoration: underline;
     }
-
     .accordion {
       background: var(--accent);
       border-radius: 8px;
       padding: 20px;
       margin-bottom: 20px;
       display: none;
-      opacity: 0;
-      transition: all 0.4s ease;
+      animation: fadeIn 0.4s ease-in-out;
     }
-
     .accordion.open {
       display: block;
-      opacity: 1;
     }
-
+    @keyframes fadeIn {
+      from {opacity: 0; transform: translateY(10px);}
+      to {opacity: 1; transform: translateY(0);}
+    }
     .roadmap-box {
       background: var(--accent);
       padding: 20px;
       border-radius: 10px;
       margin-top: 30px;
+      animation: fadeIn 0.6s ease-in-out;
     }
-
     .roadmap-box h3 {
       margin-top: 0;
       color: var(--primary);
     }
-
     footer {
       text-align: center;
       padding: 20px;
       font-size: 14px;
       background: #eee;
     }
-
-    a {
-      color: #d30000;
-      text-decoration: none;
-    }
-
-    .code {
-      font-family: 'JetBrains Mono', monospace;
-    }
-
     .social-buttons {
       position: fixed;
       bottom: 20px;
@@ -133,7 +107,6 @@
       flex-direction: column;
       gap: 10px;
     }
-
     .social-buttons a {
       background: #005f9e;
       color: white;
@@ -144,17 +117,16 @@
       text-align: center;
       line-height: 48px;
       text-decoration: none;
-      transition: transform 0.3s ease;
+      transition: background 0.3s;
     }
-
     .social-buttons a:hover {
-      transform: scale(1.2) rotate(10deg);
+      background: #003d6b;
     }
   </style>
 </head>
 <body>
   <header>
-    <img src="https://tellertoken.wordpress.com/wp-content/uploads/2025/04/bemo-logo-256x256-1.png" alt="Logo BEMO" />
+    <img src="https://tellertoken.wordpress.com/wp-content/uploads/2025/04/bemo-logo-256x256-1.png" alt="Logo BEMO">
     <h1>BEMO_US IND</h1>
     <p>Token Anak Bangsa, Terinspirasi dari Transportasi Legendaris Indonesia</p>
     <div class="language-switcher">
@@ -170,7 +142,7 @@
   <div class="social-buttons">
     <a href="#" title="Twitter">🐦</a>
     <a href="#" title="Telegram">💬</a>
-    <a href="https://wa.me/6281324542719" target="_blank" title="WhatsApp">📱</a>
+    <a href="https://wa.me/6281324542719" title="WhatsApp">📱</a>
   </div>
 
   <footer>
@@ -232,16 +204,11 @@
       whitepaperContent[currentLang].forEach((item, index) => {
         const title = document.createElement("h2");
         title.textContent = item.title;
-        title.setAttribute("tabindex", 0);
-        title.setAttribute("role", "button");
-
         const content = document.createElement("div");
         content.className = "accordion";
         content.innerHTML = item.text;
 
-        title.addEventListener("click", () => {
-          content.classList.toggle("open");
-        });
+        title.onclick = () => content.classList.toggle("open");
 
         container.appendChild(title);
         container.appendChild(content);
@@ -250,7 +217,7 @@
 
     function renderRoadmap() {
       const roadmap = document.getElementById("roadmap");
-      roadmap.innerHTML = `<h2>${currentLang === "id" ? "Peta Jalan" : "Roadmap"}</h2>`;
+      roadmap.innerHTML = '<h2>Roadmap</h2>';
       roadmapContent[currentLang].forEach(item => {
         const box = document.createElement("div");
         box.className = "roadmap-box";
@@ -268,21 +235,20 @@
       });
     }
 
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark-mode");
-    }
-
     function setLang(lang) {
       currentLang = lang;
       renderWhitepaper();
       renderRoadmap();
     }
 
-    // Init on load
-    window.onload = function () {
-      renderWhitepaper();
-      renderRoadmap();
-    };
+    function toggleDarkMode() {
+      document.body.classList.toggle("dark-mode");
+    }
+
+    // Init
+    renderWhitepaper();
+    renderRoadmap();
   </script>
 </body>
 </html>
+
