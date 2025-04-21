@@ -19,7 +19,6 @@
       padding: 0;
       color: #333;
       transition: background 0.3s, color 0.3s;
-      scroll-behavior: smooth;
     }
     body.dark-mode {
       background-color: var(--dark-bg);
@@ -59,10 +58,6 @@
     h2 {
       color: var(--primary);
       cursor: pointer;
-      transition: color 0.3s;
-    }
-    h2:hover {
-      color: #003f6d;
     }
     .accordion {
       background: var(--accent);
@@ -70,10 +65,6 @@
       padding: 20px;
       margin-bottom: 20px;
       display: none;
-      animation: fadeIn 0.3s ease-in-out forwards;
-    }
-    .accordion.open {
-      display: block;
     }
     .roadmap-box {
       background: var(--accent);
@@ -116,14 +107,6 @@
       text-align: center;
       line-height: 48px;
       text-decoration: none;
-      transition: transform 0.2s;
-    }
-    .social-buttons a:hover {
-      transform: scale(1.1);
-    }
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(-10px); }
-      to { opacity: 1; transform: translateY(0); }
     }
   </style>
 </head>
@@ -141,17 +124,16 @@
 
   <section id="whitepaper"></section>
   <section id="roadmap"></section>
-
-  <div class="social-buttons">
-    <a href="#" target="_blank" title="Twitter">🐦</a>
-    <a href="#" target="_blank" title="Telegram">💬</a>
-    <a href="https://wa.me/6281324542719" target="_blank" title="WhatsApp">📱</a>
-  </div>
+  
+ <div class="social-buttons">
+  <a href="#" target="_blank" title="Twitter">🐦</a>
+  <a href="#" target="_blank" title="Telegram">💬</a>
+  <a href="https://wa.me/6281324542719" target="_blank" title="WhatsApp">📱</a>
+</div>
 
   <footer>
     <p>🇮🇩 Hidup Indonesia! | NKRI Harga Mati</p>
   </footer>
-
 
   <script>
      const whitepaperContent = {
@@ -202,68 +184,57 @@
 
     let currentLang = 'id';
 
-     function renderWhitepaper() {
-    const container = document.getElementById("whitepaper");
-    container.innerHTML = "";
-    whitepaperContent[currentLang].forEach((item, index) => {
-      const title = document.createElement("h2");
-      title.textContent = item.title;
-      title.setAttribute("tabindex", 0);
-      title.setAttribute("role", "button");
-      title.setAttribute("aria-expanded", "false");
-      title.setAttribute("aria-controls", `accordion-${index}`);
-
-      const content = document.createElement("div");
-      content.className = "accordion";
-      content.id = `accordion-${index}`;
-      content.setAttribute("aria-hidden", "true");
-      content.innerHTML = item.text;
-
-      title.addEventListener("click", () => {
-        const isExpanded = content.classList.contains("open");
-        content.classList.toggle("open");
-        title.setAttribute("aria-expanded", !isExpanded);
+    function renderWhitepaper() {
+      const container = document.getElementById("whitepaper");
+      container.innerHTML = "";
+      whitepaperContent[currentLang].forEach((item, index) => {
+        const title = document.createElement("h2");
+        title.textContent = item.title;
+        title.setAttribute("tabindex", 0);
+        title.setAttribute("role", "button");
+        title.setAttribute("aria-expanded", "false");
+        title.setAttribute("aria-controls", accordion-${index});
+        title.addEventListener("click", () => {
+          const content = document.getElementById(accordion-${index});
+          const isExpanded = content.style.display === "block";
+          content.style.display = isExpanded ? "none" : "block";
+          title.setAttribute("aria-expanded", !isExpanded);
+        });
+        const content = document.createElement("div");
+        content.className = "accordion";
+        content.id = accordion-${index};
+        content.setAttribute("aria-hidden", "true");
+        content.innerHTML = item.text;
+        container.appendChild(title);
+        container.appendChild(content);
       });
+    }
 
-      container.appendChild(title);
-      container.appendChild(content);
-    });
-  }
-
-  function renderRoadmap() {
-    const roadmap = document.getElementById("roadmap");
-    roadmap.innerHTML = '<h2>Roadmap</h2>';
-    roadmapContent[currentLang].forEach(item => {
-      const box = document.createElement("div");
-      box.className = "roadmap-box";
-      const title = document.createElement("h3");
-      title.textContent = item.quarter;
-      const ul = document.createElement("ul");
-      item.items.forEach(point => {
-        const li = document.createElement("li");
-        li.textContent = point;
-        ul.appendChild(li);
+    function renderRoadmap() {
+      const roadmap = document.getElementById("roadmap");
+      roadmap.innerHTML = '<h2>Roadmap</h2>';
+      roadmapContent[currentLang].forEach(item => {
+        const box = document.createElement("div");
+        box.className = "roadmap-box";
+        const title = document.createElement("h3");
+        title.textContent = item.quarter;
+        const ul = document.createElement("ul");
+        item.items.forEach(point => {
+          const li = document.createElement("li");
+          li.textContent = point;
+          ul.appendChild(li);
+        });
+        box.appendChild(title);
+        box.appendChild(ul);
+        roadmap.appendChild(box);
       });
-      box.appendChild(title);
-      box.appendChild(ul);
-      roadmap.appendChild(box);
-    });
-  }
+    }
 
-  function setLang(lang) {
-    currentLang = lang;
-    renderWhitepaper();
-    renderRoadmap();
-  }
-
-  function toggleDarkMode() {
-    document.body.classList.toggle("dark-mode");
-  }
-
-  // jalankan di awal
-  renderWhitepaper();
-  renderRoadmap();
-</script>
+    function setLang(lang) {
+      currentLang = lang;
+      renderWhitepaper();
+      renderRoadmap();
+    }
 
     function toggleDarkMode() {
       document.body.classList.toggle("dark-mode");
