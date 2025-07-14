@@ -21,51 +21,119 @@
       color: #333;
       margin: 0;
       padding: 0;
-      transition: background 0.3s, color 0.3s;
+      transition: background 0.3s ease, color 0.3s ease; /* Transisi lebih halus */
+      overflow-x: hidden; /* Mencegah scroll horizontal */
     }
     body.dark-mode {
       background-color: var(--dark-bg);
       color: var(--dark-text);
     }
+
+    /* Animasi untuk Header */
     header {
       background-color: var(--primary);
       color: white;
       padding: 20px;
       text-align: center;
       position: relative;
+      overflow: hidden; /* Penting untuk animasi gelombang */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Tambah bayangan */
     }
+    header::before { /* Elemen pseudo untuk efek gelombang */
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px; /* Tinggi gelombang */
+      background: rgba(255, 255, 255, 0.1); /* Warna gelombang */
+      border-radius: 50% 50% 0 0;
+      transform: translateY(50%); /* Awal di bawah, lalu naik */
+      animation: wave 10s linear infinite alternate; /* Animasi gelombang */
+      z-index: 0;
+    }
+    @keyframes wave {
+      0% { transform: translateY(50%) translateX(0); }
+      100% { transform: translateY(50%) translateX(-20%); } /* Bergerak horizontal */
+    }
+
     header img {
       width: 100px;
       margin-bottom: 10px;
+      animation: fadeInScale 1s ease-out forwards; /* Animasi logo */
+      position: relative; /* Agar di atas gelombang */
+      z-index: 1;
     }
+    h1 {
+        animation: slideInUp 1s ease-out forwards; /* Animasi judul */
+        animation-delay: 0.3s;
+        opacity: 0; /* Mulai tersembunyi */
+    }
+    header p {
+        animation: slideInUp 1s ease-out forwards; /* Animasi sub-judul */
+        animation-delay: 0.6s;
+        opacity: 0; /* Mulai tersembunyi */
+    }
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes slideInUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+
     .language-switcher {
       position: absolute;
       top: 20px;
       right: 20px;
       display: flex;
       gap: 10px;
+      animation: fadeIn 1s ease-out forwards;
+      animation-delay: 0.9s;
+      opacity: 0;
+      z-index: 1; /* Agar di atas gelombang */
     }
     .lang-btn, .dark-btn {
       background: white;
       border: none;
-      padding: 6px 10px;
+      padding: 8px 12px; /* Sedikit lebih besar */
       cursor: pointer;
       font-size: 14px;
       border-radius: 6px;
+      transition: all 0.3s ease; /* Transisi hover */
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
+    .lang-btn:hover, .dark-btn:hover {
+      background: var(--accent);
+      transform: translateY(-2px); /* Efek melayang */
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
     section {
       padding: 40px 20px;
       max-width: 800px;
       margin: auto;
+      opacity: 0; /* Mulai tersembunyi untuk animasi scroll */
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
+    section.visible { /* Kelas ini akan ditambahkan oleh JS */
+        opacity: 1;
+        transform: translateY(0);
+    }
+
     h2 {
       color: var(--primary);
       cursor: pointer;
       margin-top: 20px;
-      transition: 0.2s;
+      transition: color 0.2s ease, text-decoration 0.2s ease;
+      font-size: 1.8em; /* Ukuran font lebih besar */
     }
     h2:hover {
       text-decoration: underline;
+      color: #007bff; /* Warna sedikit berbeda saat hover */
     }
     .accordion {
       background: var(--accent);
@@ -73,7 +141,8 @@
       padding: 20px;
       margin-bottom: 20px;
       display: none;
-      animation: fadeIn 0.4s ease-in-out;
+      animation: fadeIn 0.4s ease-in-out forwards; /* 'forwards' menjaga keadaan akhir animasi */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Tambah bayangan */
     }
     .accordion.open {
       display: block;
@@ -87,18 +156,48 @@
       padding: 20px;
       border-radius: 10px;
       margin-top: 30px;
-      animation: fadeIn 0.6s ease-in-out;
+      animation: fadeIn 0.6s ease-in-out forwards; /* 'forwards' menjaga keadaan akhir animasi */
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); /* Tambah bayangan */
     }
     .roadmap-box h3 {
       margin-top: 0;
       color: var(--primary);
+      font-size: 1.5em;
+      border-bottom: 2px solid var(--primary); /* Garis bawah untuk quarter */
+      padding-bottom: 10px;
+      margin-bottom: 15px;
     }
+    .roadmap-box ul {
+        list-style: none; /* Hilangkan bullet default */
+        padding: 0;
+    }
+    .roadmap-box li {
+        position: relative;
+        padding-left: 25px; /* Ruang untuk ikon bullet kustom */
+        margin-bottom: 8px;
+    }
+    .roadmap-box li::before {
+        content: '✅'; /* Ikon bullet kustom */
+        position: absolute;
+        left: 0;
+        color: var(--primary);
+    }
+
     footer {
       text-align: center;
       padding: 20px;
       font-size: 14px;
       background: #eee;
+      color: #555;
+      margin-top: 40px; /* Tambah jarak dari konten atas */
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.05);
     }
+    body.dark-mode footer {
+        background: #0d0d0d;
+        color: #bbb;
+    }
+
+    /* Animasi untuk Tombol Sosial Media */
     .social-buttons {
       position: fixed;
       bottom: 20px;
@@ -106,21 +205,37 @@
       display: flex;
       flex-direction: column;
       gap: 10px;
+      z-index: 1000;
     }
     .social-buttons a {
-      background: #005f9e;
+      background: var(--primary);
       color: white;
-      width: 48px;
-      height: 48px;
+      width: 50px; /* Sedikit lebih besar */
+      height: 50px;
       border-radius: 50%;
-      font-size: 20px;
+      font-size: 22px; /* Ikon lebih besar */
       text-align: center;
-      line-height: 48px;
+      line-height: 50px;
       text-decoration: none;
-      transition: background 0.3s;
+      transition: all 0.3s ease; /* Transisi untuk hover */
+      box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+      animation: popIn 0.5s ease-out forwards; /* Animasi saat muncul */
+      opacity: 0; /* Mulai tersembunyi */
     }
+    .social-buttons a:nth-child(1) { animation-delay: 1.0s; }
+    .social-buttons a:nth-child(2) { animation-delay: 1.1s; }
+    .social-buttons a:nth-child(3) { animation-delay: 1.2s; }
+    .social-buttons a:nth-child(4) { animation-delay: 1.3s; }
+
+    @keyframes popIn {
+        from { opacity: 0; transform: scale(0.5); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
     .social-buttons a:hover {
       background: #003d6b;
+      transform: scale(1.1) translateY(-3px); /* Efek sedikit membesar dan melayang */
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
     }
   </style>
 </head>
@@ -140,10 +255,10 @@
   <section id="roadmap"></section>
 
   <div class="social-buttons">
-    <a href="#" title="Twitter">🐦</a>
-    <a href="#" title="Telegram">💬</a>
-    <a href="https://wa.me/6281324542719" title="WhatsApp">📱</a>
-    <a href="https://www.geckoterminal.com/ton/pools/EQC4YkAYlfuSXzQmL3YtKk-o2DYasnVneEQ6Lwgyc0EwhGJ6",title="CoinGeko Terminal">📈</a> 
+    <a href="#" target="_blank" title="Twitter">🐦</a>
+    <a href="#" target="_blank" title="Telegram">💬</a>
+    <a href="https://wa.me/6281324542719" target="_blank" title="WhatsApp">📱</a>
+    <a href="https://www.geckoterminal.com/ton/pools/EQC4YkAYlfuSXzQmL3YtKk-o2DYasnVneEQ6Lwgyc0EwhGJ6" target="_blank" title="CoinGeko Terminal">📈</a>
   </div>
 
   <footer>
@@ -182,7 +297,7 @@
     };
 
 
-     const roadmapContent = {
+      const roadmapContent = {
       id: [
         { quarter: "Q1 2025", items: ["Peluncuran token BEMO_US IND di jaringan TON", "Pemrograman dan peluncuran smart contract pertama"] },
         { quarter: "Q2 2025", items: ["Pembentukan dan pengembangan komunitas (Twitter, Telegram)", "Pemasaran dan kolaborasi dengan influencer blockchain Indonesia"] },
@@ -202,7 +317,7 @@
 
     function renderWhitepaper() {
       const container = document.getElementById("whitepaper");
-      container.innerHTML = "";
+      container.innerHTML = '<h2>Whitepaper</h2>'; // Tambah judul Whitepaper
       whitepaperContent[currentLang].forEach((item, index) => {
         const title = document.createElement("h2");
         title.textContent = item.title;
@@ -241,16 +356,38 @@
       currentLang = lang;
       renderWhitepaper();
       renderRoadmap();
+      // Pastikan animasi scroll-in ulang saat bahasa berubah
+      checkSectionsVisibility();
     }
 
     function toggleDarkMode() {
       document.body.classList.toggle("dark-mode");
     }
 
-    // Init
-    renderWhitepaper();
-    renderRoadmap();
+    // Fungsi untuk mengelola animasi saat scroll
+    function checkSectionsVisibility() {
+        const sections = document.querySelectorAll('section');
+        sections.forEach(section => {
+            const sectionTop = section.getBoundingClientRect().top;
+            const viewportHeight = window.innerHeight;
+            // Jika bagian masuk ke dalam viewport (sekitar 15% dari bawah viewport)
+            if (sectionTop < viewportHeight * 0.85) {
+                section.classList.add('visible');
+            } else {
+                section.classList.remove('visible'); // Hilangkan kelas jika keluar dari viewport
+            }
+        });
+    }
+
+    // Event listener untuk scroll
+    window.addEventListener('scroll', checkSectionsVisibility);
+
+    // Inisialisasi saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', () => {
+      renderWhitepaper();
+      renderRoadmap();
+      checkSectionsVisibility(); // Jalankan sekali saat dimuat untuk bagian yang sudah terlihat
+    });
   </script>
 </body>
 </html>
-
