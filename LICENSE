@@ -1,0 +1,59 @@
+MIT License
+
+Copyright (c) 2025 BSC Arbitrage Bot
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+---
+
+DISCLAIMER:
+
+This software is provided for educational and research purposes only. 
+
+USE AT YOUR OWN RISK. The authors and contributors of this software:
+
+1. Make no warranties or representations about the accuracy, reliability, 
+   completeness, or timeliness of the software or its results.
+
+2. Are not responsible for any losses, damages, or liabilities arising from 
+   the use of this software, including but not limited to:
+   - Financial losses from trading activities
+   - Loss of funds due to bugs or errors
+   - Security breaches or hacks
+   - Network failures or downtime
+   - Smart contract vulnerabilities
+   - Market volatility
+
+3. Do not guarantee any profits or returns from using this software.
+
+4. Recommend thorough testing in testnet environments before any mainnet deployment.
+
+5. Advise users to:
+   - Understand the risks of cryptocurrency trading
+   - Never invest more than you can afford to lose
+   - Comply with all applicable laws and regulations
+   - Secure their private keys and sensitive information
+   - Regularly audit and monitor their trading activities
+
+By using this software, you acknowledge that you have read this disclaimer,
+understand the risks involved, and agree to use the software at your own risk.
+
+CRYPTOCURRENCY TRADING INVOLVES SUBSTANTIAL RISK OF LOSS AND IS NOT SUITABLE 
+FOR EVERY INVESTOR. THE VALUATION OF CRYPTOCURRENCIES MAY FLUCTUATE, AND, AS 
+A RESULT, CLIENTS MAY LOSE MORE THAN THEIR ORIGINAL INVESTMENT.
